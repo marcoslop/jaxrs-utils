@@ -1,4 +1,4 @@
-package com.marcoslope.jee.jaxrsutils;
+package com.marcoslop.jee.jaxrsutils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.marcoslope.jee.jaxrsutils;
+package com.marcoslop.jee.jaxrsutils;
 
 /**
  * Created by marcoslop on 23/07/14.

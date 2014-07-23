@@ -1,4 +1,4 @@
-package com.marcoslope.jee.jaxrsutils;
+package com.marcoslop.jee.jaxrsutils;
 
 import org.codehaus.jackson.map.AnnotationIntrospector;
 import org.codehaus.jackson.map.ObjectMapper;

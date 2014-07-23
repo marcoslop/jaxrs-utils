@@ -1,6 +1,6 @@
-package com.marcoslope.jee.jaxrsutils.test;
+package com.marcoslop.jee.jaxrsutils.test;
 
-import com.marcoslope.jee.jaxrsutils.JsonSerializator;
+import com.marcoslop.jee.jaxrsutils.JsonSerializator;
 import org.junit.After;
 import org.junit.Before;
 import org.mockito.Mockito;
@@ -15,13 +15,7 @@ import java.io.IOException;
 
 public abstract class AbstractTestIT {
 
-	@PersistenceContext
-    protected EntityManager em;
-    
-    @Inject
-    UserTransaction utx;
-
-    protected HttpServletRequest request;
+	protected HttpServletRequest request;
     
     @Before
 	public void preparePersistenceTest() throws Exception {
@@ -32,19 +26,22 @@ public abstract class AbstractTestIT {
         }
 	    prepareObjects ();
 	}
+
+    protected abstract EntityManager getEm();
+    protected abstract UserTransaction getUtx();
     
     protected void prepareObjects(){
         //TOBE OVERWRITTEN BY CHILDREN
     };
     
     private void startTransaction() throws Exception {
-	    utx.begin();
-	    em.joinTransaction();
+	    getUtx().begin();
+	    getEm().joinTransaction();
 	}
 	
 	@After
     public void commitTransaction() throws Exception {
-        utx.rollback();
+        getUtx().rollback();
     }
 
     protected void assertJsonCorrect (Object object) throws IOException {
@@ -53,7 +50,7 @@ public abstract class AbstractTestIT {
 
     protected void assertJsonCorrect (Object object, boolean detach) throws IOException {
         if (detach){
-            em.detach(object);
+            getEm().detach(object);
         }
         new JsonSerializator().writeToString(object);
     }
@@ -66,7 +63,7 @@ public abstract class AbstractTestIT {
     protected void executeScript (String sql) throws Exception {
         String[] queries = sql.split(";");
         for (String query : queries) {
-            Query q =  em.createNativeQuery(query);
+            Query q =  getEm().createNativeQuery(query);
             q.executeUpdate();
         }
     }
