@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.mockito.Mockito;
 
 import javax.inject.Inject;
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -49,7 +50,7 @@ public abstract class AbstractTestIT {
     }
 
     protected void assertJsonCorrect (Object object, boolean detach) throws IOException {
-        if (detach){
+        if (detach && object.getClass().isAnnotationPresent(Entity.class) && getEm().contains(object)){
             getEm().detach(object);
         }
         new JsonSerializator().writeToString(object);
