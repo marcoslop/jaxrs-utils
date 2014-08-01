@@ -1,6 +1,8 @@
 package com.marcoslop.jee.jaxrsutils;
 
+import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.AnnotationIntrospector;
+import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.xc.JaxbAnnotationIntrospector;
 
@@ -26,6 +28,11 @@ public class JsonSerializator {
         return json;
     }
 
+    public Object writeToObject (String json, Class clazz) throws IOException {
+        ObjectMapper mapper = getObjectMapper();
+        return mapper.readValue(json, clazz);
+    }
+
     private ObjectMapper getObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
 
@@ -36,6 +43,7 @@ public class JsonSerializator {
                 setAnnotationIntrospector(introspector);
         // make serializer use JAXB annotations (only)
         mapper.getSerializationConfig().setAnnotationIntrospector(introspector);
+        mapper.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         return mapper;
     }
 
