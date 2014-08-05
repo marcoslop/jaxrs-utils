@@ -11,12 +11,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 import java.io.IOException;
 
 public abstract class AbstractTestIT {
 
 	protected HttpServletRequest request;
+    protected HttpSession session;
     
     @Before
 	public void preparePersistenceTest() throws Exception {
@@ -75,7 +77,9 @@ public abstract class AbstractTestIT {
      */
     protected HttpServletRequest getAllowAllRolesRequest (){
         request = Mockito.mock(HttpServletRequest.class);
+        session = Mockito.mock(HttpSession.class);
         Mockito.when(request.isUserInRole(Mockito.anyString())).thenReturn(true);
+        Mockito.when(request.getSession()).thenReturn(session);
         return request;
     }
 	
