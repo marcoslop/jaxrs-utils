@@ -22,9 +22,7 @@ public class JsonSerializator {
 
     public String writeToString (Object object) throws IOException {
         ObjectMapper mapper = getObjectMapper();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        mapper.writeValue(baos, object);
-        String json = new String (baos.toByteArray());
+        String json = mapper.writeValueAsString(object);
         return json;
     }
 
