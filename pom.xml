@@ -6,7 +6,7 @@
 
     <groupId>com.marcoslop.jee</groupId>
     <artifactId>jaxrs-utils</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <distributionManagement>
         <repository>
@@ -32,15 +32,31 @@
         </dependency>
 
         <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.13</version>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.3.6.Final</version>
+            <scope>provided</scope>
         </dependency>
+
+
         <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-xc</artifactId>
-            <version>1.9.13</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.4.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-jaxb-annotations</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-hibernate4</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.slf4j</groupId>

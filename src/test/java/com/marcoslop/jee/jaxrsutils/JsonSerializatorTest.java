@@ -25,4 +25,20 @@ public class JsonSerializatorTest {
         assertEquals (textWithUTF8, jsonSerializator.writeToObject(json, String.class));
     }
 
+    @Test
+    public void testBeanSerialize() throws IOException {
+        String json = jsonSerializator.writeToString(new TestBean());
+
+        assertEquals("{\"name\":\"test\"}", json);
+    }
+
+    @Test
+    public void testBeanDesSerialize() throws IOException {
+        String json = "{\"name\":\"test2\", \"unknown\":\"test\"}";
+
+        TestBean testBean = (TestBean) jsonSerializator.writeToObject(json, TestBean.class);
+        assertEquals("test2", testBean.getName());
+    }
+
+
 }
