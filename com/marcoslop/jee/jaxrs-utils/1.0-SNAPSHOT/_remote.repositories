@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sat Aug 09 10:28:08 CEST 2014
+jaxrs-utils-1.0-SNAPSHOT.jar>=
+jaxrs-utils-1.0-SNAPSHOT.pom>=
+jaxrs-utils-1.0-20140723.084700-1.pom>jaxrs-utils-mvn-repo=
+jaxrs-utils-1.0-20140723.084700-1.jar>jaxrs-utils-mvn-repo=
