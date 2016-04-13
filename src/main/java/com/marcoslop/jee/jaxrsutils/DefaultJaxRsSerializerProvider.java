@@ -34,7 +34,7 @@ public class DefaultJaxRsSerializerProvider implements MessageBodyWriter<IDefaul
 	@Override
 	public boolean isWriteable(Class<?> clazz, Type type, Annotation[] annotations,
 			MediaType mediaType) {
-		return true;
+        return IDefaultJaxRsSerializer.class.isAssignableFrom(clazz);
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class DefaultJaxRsSerializerProvider implements MessageBodyWriter<IDefaul
 
 
     @Override
-    public boolean isReadable(Class<?> aClass, Type type, Annotation[] annotations, MediaType mediaType) {
-        return true;
+    public boolean isReadable(Class<?> clazz, Type type, Annotation[] annotations, MediaType mediaType) {
+        return IDefaultJaxRsSerializer.class.isAssignableFrom(clazz);
     }
 
     @Override
