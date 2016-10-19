@@ -3,10 +3,10 @@
   <groupId>com.marcoslop.jee</groupId>
   <artifactId>jaxrs-utils</artifactId>
   <versioning>
-    <release>1.0</release>
+    <release>1.0.1</release>
     <versions>
-      <version>1.0</version>
+      <version>1.0.1</version>
     </versions>
-    <lastUpdated>20140923085832</lastUpdated>
+    <lastUpdated>20160413082208</lastUpdated>
   </versioning>
 </metadata>
