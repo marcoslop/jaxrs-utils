@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class JsonSerializatorTest {
 
@@ -28,6 +28,13 @@ public class JsonSerializatorTest {
     @Test
     public void testBeanSerialize() throws IOException {
         String json = jsonSerializator.writeToString(new TestBean());
+
+        assertEquals("{\"name\":\"test\"}", json);
+    }
+
+    @Test
+    public void testBeanSerialize_shouldHideNullProperties() throws IOException {
+        String json = jsonSerializator.writeToString(new TestBeanExtended());
 
         assertEquals("{\"name\":\"test\"}", json);
     }
