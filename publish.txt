@@ -1,0 +1,6 @@
+Para desplegar una nueva versión, habría que ejecutar:
+
+mvn clean deploy
+
+Si falla siempre se puede subir a mano, cogiendo el directorio 'target/mvn-repo/com/marcoslop/jee/jaxrs-utils/<version>'
+ y copiandolo en el branch 'mvn-repo' dentro del directorio src y haciendo un commit + push.
