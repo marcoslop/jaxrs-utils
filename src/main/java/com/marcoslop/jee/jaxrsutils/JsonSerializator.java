@@ -11,9 +11,6 @@ import com.fasterxml.jackson.module.jaxb.JaxbAnnotationIntrospector;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- * Created by marcoslop on 11/07/14.
- */
 public class JsonSerializator {
 
     private boolean ignoreHibernateLazy = true;
@@ -36,7 +33,7 @@ public class JsonSerializator {
         return json;
     }
 
-    public Object writeToObject (String json, Class clazz) throws IOException {
+    public <T> T writeToObject (String json, Class<T> clazz) throws IOException {
         ObjectMapper mapper = getObjectMapper();
         return mapper.readValue(json, clazz);
     }
