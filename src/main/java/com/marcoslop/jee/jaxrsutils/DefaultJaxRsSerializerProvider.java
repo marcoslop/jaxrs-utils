@@ -44,6 +44,7 @@ public class DefaultJaxRsSerializerProvider implements MessageBodyWriter<IDefaul
 			throws IOException, WebApplicationException {
         try {
             new JsonSerializator().writeToStream(item, outputStream);
+            SerializedJaxRsThreadLocal.set(item);
         }catch (Throwable t){
             logger.error("Error in JSON serialization", t);
             throw new WebApplicationException("Error in Default JaxRS Serializer: "+t.getMessage(), 500);
